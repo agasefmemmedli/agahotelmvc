@@ -81,3 +81,12 @@ C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.csproj
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.csproj.CopyComplete
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.dll
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.pdb
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\bin\EntityFramework.dll
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\bin\EntityFramework.xml
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.Init.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.csproj.GenerateResource.cache
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.ChangeEnum.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.AddDataAnnitations.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.AddIdNameToProductCategory.resources

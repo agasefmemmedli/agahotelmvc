@@ -1,6 +1,8 @@
 $(function() {
     "use strict";
-
+    $('.input-daterange input').each(function () {
+        $(this).datepicker('clearDates');
+    });
     setTimeout(function(){
         $(document).ready(function(){
             var chart = c3.generate({

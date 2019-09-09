@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,14 +126,46 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\ReceptionController.cs" />
     <Compile Include="Controllers\RestoranController.cs" />
+    <Compile Include="Data\HotelContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909071843245_Init.cs" />
+    <Compile Include="Migrations\201909071843245_Init.Designer.cs">
+      <DependentUpon>201909071843245_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909071852556_ChangeEnum.cs" />
+    <Compile Include="Migrations\201909071852556_ChangeEnum.Designer.cs">
+      <DependentUpon>201909071852556_ChangeEnum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909080659117_AddDataAnnitations.cs" />
+    <Compile Include="Migrations\201909080659117_AddDataAnnitations.Designer.cs">
+      <DependentUpon>201909080659117_AddDataAnnitations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909091619328_AddIdNameToProductCategory.cs" />
+    <Compile Include="Migrations\201909091619328_AddIdNameToProductCategory.Designer.cs">
+      <DependentUpon>201909091619328_AddIdNameToProductCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Booking.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderList.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ProductOrderPage.cs" />
+    <Compile Include="ViewModel\SearchList.cs" />
+    <Compile Include="ViewModel\SearchPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -143,11 +181,167 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="wwwroot\bundles\c3.bundle.js" />
+    <Content Include="wwwroot\bundles\chartist.bundle.js" />
+    <Content Include="wwwroot\bundles\datatablescripts.bundle.js" />
+    <Content Include="wwwroot\bundles\flotscripts.bundle.js" />
+    <Content Include="wwwroot\bundles\footable.bundle.js" />
+    <Content Include="wwwroot\bundles\fullcalendarscripts.bundle.js" />
+    <Content Include="wwwroot\bundles\jvectormap.bundle.js" />
+    <Content Include="wwwroot\bundles\knob.bundle.js" />
+    <Content Include="wwwroot\bundles\libscripts.bundle.js" />
+    <Content Include="wwwroot\bundles\markdown.bundle.js" />
+    <Content Include="wwwroot\bundles\morrisscripts.bundle.js" />
+    <Content Include="wwwroot\bundles\summernote.bundle.js" />
+    <Content Include="wwwroot\bundles\vendorscripts.bundle.js" />
+    <Content Include="wwwroot\css\blog.css" />
+    <Content Include="wwwroot\css\demo.css" />
+    <Content Include="wwwroot\css\main.css" />
+    <Content Include="wwwroot\images\backgrounds\img-1.jpg" />
+    <Content Include="wwwroot\images\backgrounds\img-4.jpg" />
+    <Content Include="wwwroot\images\blog\blog-page-1.jpg" />
+    <Content Include="wwwroot\images\blog\blog-page-2.jpg" />
+    <Content Include="wwwroot\images\blog\blog-page-4.jpg" />
+    <Content Include="wwwroot\images\brand\icon.gif" />
+    <Content Include="wwwroot\images\brand\icon.svg" />
+    <Content Include="wwwroot\images\brand\icon_black.gif" />
+    <Content Include="wwwroot\images\brand\icon_black.svg" />
+    <Content Include="wwwroot\images\image-gallery\1.jpg" />
+    <Content Include="wwwroot\images\image-gallery\10.jpg" />
+    <Content Include="wwwroot\images\image-gallery\11.jpg" />
+    <Content Include="wwwroot\images\image-gallery\12.jpg" />
+    <Content Include="wwwroot\images\image-gallery\13.jpg" />
+    <Content Include="wwwroot\images\image-gallery\14.jpg" />
+    <Content Include="wwwroot\images\image-gallery\15.jpg" />
+    <Content Include="wwwroot\images\image-gallery\2.jpg" />
+    <Content Include="wwwroot\images\image-gallery\3.jpg" />
+    <Content Include="wwwroot\images\image-gallery\4.jpg" />
+    <Content Include="wwwroot\images\image-gallery\5.jpg" />
+    <Content Include="wwwroot\images\image-gallery\6.jpg" />
+    <Content Include="wwwroot\images\image-gallery\7.jpg" />
+    <Content Include="wwwroot\images\image-gallery\8.jpg" />
+    <Content Include="wwwroot\images\image-gallery\9.jpg" />
+    <Content Include="wwwroot\images\lg\avatar1.jpg" />
+    <Content Include="wwwroot\images\lg\avatar2.jpg" />
+    <Content Include="wwwroot\images\lg\avatar3.jpg" />
+    <Content Include="wwwroot\images\lg\avatar4.jpg" />
+    <Content Include="wwwroot\images\paper-plane.png" />
+    <Content Include="wwwroot\images\plane.png" />
+    <Content Include="wwwroot\images\prv\splash.png" />
+    <Content Include="wwwroot\images\prv\thumb-1.jpg" />
+    <Content Include="wwwroot\images\prv\thumb-2.jpg" />
+    <Content Include="wwwroot\images\roomimg\1.jpg" />
+    <Content Include="wwwroot\images\sm\avatar1.jpg" />
+    <Content Include="wwwroot\images\sm\avatar2.jpg" />
+    <Content Include="wwwroot\images\sm\avatar3.jpg" />
+    <Content Include="wwwroot\images\sm\avatar5.jpg" />
+    <Content Include="wwwroot\images\sm\avatar6.jpg" />
+    <Content Include="wwwroot\images\space-ship.png" />
+    <Content Include="wwwroot\images\user.png" />
+    <Content Include="wwwroot\images\xs\avatar1.jpg" />
+    <Content Include="wwwroot\images\xs\avatar10.jpg" />
+    <Content Include="wwwroot\images\xs\avatar2.jpg" />
+    <Content Include="wwwroot\images\xs\avatar3.jpg" />
+    <Content Include="wwwroot\images\xs\avatar4.jpg" />
+    <Content Include="wwwroot\images\xs\avatar5.jpg" />
+    <Content Include="wwwroot\images\xs\avatar6.jpg" />
+    <Content Include="wwwroot\images\xs\avatar7.jpg" />
+    <Content Include="wwwroot\images\xs\avatar8.jpg" />
+    <Content Include="wwwroot\images\xs\avatar9.jpg" />
+    <Content Include="wwwroot\js\datepic.js" />
+    <Content Include="wwwroot\js\demo.js" />
+    <Content Include="wwwroot\js\pages\advanced-form.js" />
+    <Content Include="wwwroot\js\pages\calendar.js" />
+    <Content Include="wwwroot\js\pages\charts\c3.js" />
+    <Content Include="wwwroot\js\pages\charts\chartjs.js" />
+    <Content Include="wwwroot\js\pages\charts\flot.js" />
+    <Content Include="wwwroot\js\pages\charts\jquery-knob.js" />
+    <Content Include="wwwroot\js\pages\charts\morris.js" />
+    <Content Include="wwwroot\js\pages\charts\sparkline.js" />
+    <Content Include="wwwroot\js\pages\form-wizard.js" />
+    <Content Include="wwwroot\js\pages\index.js" />
+    <Content Include="wwwroot\js\pages\sortable-nestable.js" />
+    <Content Include="wwwroot\js\pages\tables\editable-table.js" />
+    <Content Include="wwwroot\js\pages\tables\footable.js" />
+    <Content Include="wwwroot\js\pages\tables\jquery-datatable.js" />
+    <Content Include="wwwroot\js\pages\todo-js.js" />
+    <Content Include="wwwroot\js\pages\widgets.js" />
+    <Content Include="wwwroot\js\theme.js" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\img\bootstrap-colorpicker\alpha.png" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\img\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\img\bootstrap-colorpicker\hue.png" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\img\bootstrap-colorpicker\saturation.png" />
+    <Content Include="wwwroot\vendor\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="wwwroot\vendor\bootstrap-datepicker\css\bootstrap-datepicker3.min.css" />
+    <Content Include="wwwroot\vendor\bootstrap-datepicker\js\bootstrap-datepicker.min.js" />
+    <Content Include="wwwroot\vendor\bootstrap-multiselect\bootstrap-multiselect.css" />
+    <Content Include="wwwroot\vendor\bootstrap-multiselect\bootstrap-multiselect.js" />
+    <Content Include="wwwroot\vendor\bootstrap-select\js\bootstrap-select.min.js" />
+    <Content Include="wwwroot\vendor\bootstrap-tagsinput\bootstrap-tagsinput.css" />
+    <Content Include="wwwroot\vendor\bootstrap-tagsinput\bootstrap-tagsinput.min.js" />
+    <Content Include="wwwroot\vendor\chartist-plugin-tooltip\chartist-plugin-tooltip.css" />
+    <Content Include="wwwroot\vendor\chartist\css\chartist.min.css" />
+    <Content Include="wwwroot\vendor\chartist\polar_area_chart.js" />
+    <Content Include="wwwroot\vendor\charts-c3\plugin.css" />
+    <Content Include="wwwroot\vendor\clipboard-js\clipboard.min.js" />
+    <Content Include="wwwroot\vendor\datepic\bootstrap-datepicker.az.min.js" />
+    <Content Include="wwwroot\vendor\datepic\bootstrap-datepicker.css" />
+    <Content Include="wwwroot\vendor\datepic\bootstrap-datepicker.js" />
+    <Content Include="wwwroot\vendor\editable-table\mindmup-editabletable.js" />
+    <Content Include="wwwroot\vendor\fontawesome\css\font-awesome.min.css" />
+    <Content Include="wwwroot\vendor\fontawesome\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="wwwroot\vendor\fontawesome\js\fontawesome-all.min.html" />
+    <Content Include="wwwroot\vendor\footable-bootstrap\css\footable.bootstrap.min.css" />
+    <Content Include="wwwroot\vendor\footable-bootstrap\css\footable.standalone.min.css" />
+    <Content Include="wwwroot\vendor\fullcalendar\fullcalendar.min.css" />
+    <Content Include="wwwroot\vendor\highlight\css\highlight.min.css" />
+    <Content Include="wwwroot\vendor\highlight\js\highlight.min.js" />
+    <Content Include="wwwroot\vendor\holderjs\holder.min.js" />
+    <Content Include="wwwroot\vendor\input-mask\input-mask.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\buttons\buttons.bootstrap4.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\buttons\buttons.colVis.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\buttons\buttons.flash.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\buttons\buttons.html5.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\buttons\buttons.print.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\buttons\dataTables.buttons.min.js" />
+    <Content Include="wwwroot\vendor\jquery-datatable\dataTables.bootstrap4.min.css" />
+    <Content Include="wwwroot\vendor\jquery-inputmask\jquery.inputmask.bundle.js" />
+    <Content Include="wwwroot\vendor\jquery-knob\jquery.knob.min.js" />
+    <Content Include="wwwroot\vendor\jquery-scrollbar\css\jquery-scrollbar.css" />
+    <Content Include="wwwroot\vendor\jquery-scrollbar\js\jquery-scrollbar.min.js" />
+    <Content Include="wwwroot\vendor\jquery-scrollLock\jquery-scrollLock.min.js" />
+    <Content Include="wwwroot\vendor\jquery-sparkline\js\jquery.sparkline.min.js" />
+    <Content Include="wwwroot\vendor\jquery-steps\jquery.steps.css" />
+    <Content Include="wwwroot\vendor\jquery-steps\jquery.steps.js" />
+    <Content Include="wwwroot\vendor\jquery-validation\jquery.validate.js" />
+    <Content Include="wwwroot\vendor\jvectormap\jquery-jvectormap-2.0.3.css" />
+    <Content Include="wwwroot\vendor\LightboxGallery\mauGallery.min.js" />
+    <Content Include="wwwroot\vendor\LightboxGallery\scripts.js" />
+    <Content Include="wwwroot\vendor\markdown\bootstrap-markdown.min.css" />
+    <Content Include="wwwroot\vendor\morrisjs\morris.css" />
+    <Content Include="wwwroot\vendor\nestable\jquery-nestable.css" />
+    <Content Include="wwwroot\vendor\nestable\jquery.nestable.js" />
+    <Content Include="wwwroot\vendor\nouislider\js\nouislider.min.js" />
+    <Content Include="wwwroot\vendor\parsleyjs\css\parsley.css" />
+    <Content Include="wwwroot\vendor\parsleyjs\js\parsley.min.js" />
+    <Content Include="wwwroot\vendor\select2\select2-spinner.gif" />
+    <Content Include="wwwroot\vendor\select2\select2.css" />
+    <Content Include="wwwroot\vendor\select2\select2.min.js" />
+    <Content Include="wwwroot\vendor\select2\select2.png" />
+    <Content Include="wwwroot\vendor\select2\select2x2.png" />
+    <Content Include="wwwroot\vendor\sticky-kit\sticky-kit.min.js" />
+    <Content Include="wwwroot\vendor\summernote\dist\summernote.css" />
+    <Content Include="wwwroot\vendor\summernote\dist\summernote.js" />
+    <Content Include="wwwroot\vendor\summernote\dist\summernote.min.css" />
+    <Content Include="wwwroot\vendor\textarea-autosize\textarea-autosize.min.js" />
+    <Content Include="wwwroot\vendor\themify-icons\fonts\themify9f24.svg" />
+    <Content Include="wwwroot\vendor\themify-icons\themify-icons.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -159,6 +353,38 @@
     <Content Include="Views\Restoran\NewOrder.cshtml" />
     <Content Include="Views\Restoran\Orders.cshtml" />
     <Content Include="Views\Restoran\Products.cshtml" />
+    <Content Include="Views\Reception\Search.cshtml" />
+    <Content Include="wwwroot\vendor\fontawesome\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="wwwroot\vendor\fontawesome\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="wwwroot\vendor\fontawesome\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="wwwroot\vendor\fontawesome\fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="wwwroot\vendor\fontawesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="wwwroot\vendor\summernote\dist\font\summernoted41d.eot" />
+    <Content Include="wwwroot\vendor\summernote\dist\font\summernotef534.eot" />
+    <Content Include="wwwroot\vendor\summernote\dist\font\summernotef534.ttf" />
+    <Content Include="wwwroot\vendor\summernote\dist\font\summernotef534.woff" />
+    <Content Include="wwwroot\vendor\themify-icons\fonts\themify9f24.eot" />
+    <Content Include="wwwroot\vendor\themify-icons\fonts\themify9f24.ttf" />
+    <Content Include="wwwroot\vendor\themify-icons\fonts\themify9f24.woff" />
+    <Content Include="wwwroot\vendor\themify-icons\fonts\themifyd41d.eot" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\AddCustomer.cshtml" />
+    <Content Include="Views\Customer\UpdateCustomer.cshtml" />
+    <Content Include="Views\Reception\AddRoom.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909071843245_Init.resx">
+      <DependentUpon>201909071843245_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909071852556_ChangeEnum.resx">
+      <DependentUpon>201909071852556_ChangeEnum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909080659117_AddDataAnnitations.resx">
+      <DependentUpon>201909080659117_AddDataAnnitations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909091619328_AddIdNameToProductCategory.resx">
+      <DependentUpon>201909091619328_AddIdNameToProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

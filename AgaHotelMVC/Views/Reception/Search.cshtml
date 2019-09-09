@@ -1,0 +1,223 @@
+﻿@model SearchPage
+@{
+    ViewBag.Title = "Search";
+}
+
+    <div class="page">
+
+        <div class="container-fluid">
+            <div class="row clearfix justify-content-end">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card flex-fill">
+                        <div class="body taskboard planned_task text-center">
+                            <button type="button" class="btn btn-primary btn-block" disabled>
+                                <span class="btn-inner--visible">Müştəri: Memmedli Agasef Seymur</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card flex-fill">
+                        <div class="body taskboard planned_task">
+                            <button data-toggle="modal" data-target="#selectcustomer" type="button" class="btn btn-primary btn-block btn-animated btn-animated-y">
+                                <span class="btn-inner--visible">Müştərini seç</span>
+                                <span class="btn-inner--hidden"><i class="fa fa-plus"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 p-0">
+                <div class="row cols-xs-space cols-sm-space cols-md-space justify-content-center">
+                    <div class=" col-lg-4">
+
+                        <div class="input-group input-daterange">
+                            <input type="text" class="form-control">
+                            <span class="input-group-text" id="basic-addon3">to</span>
+                            <input type="text" aria-describedby="basic-addon" class="form-control">
+                        </div>
+                        @*<b>Giriş tarixi</b>
+                        <input type="text" class="form-control datepic">*@
+                    </div>
+                    @*<div class=" col-lg-2">
+                        <b>Cixiş tarixi</b>
+                        <input type="text" class="form-control datepic">
+                    </div>*@
+                    <div class=" col-lg-2">
+                        <b>Böyük</b>
+                        <select class="selectpicker" data-style="btn-primary" title="0">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+                    </div>
+                    <div class=" col-lg-2">
+                        <b>Uşaq</b>
+                        <select class="selectpicker" data-style="btn-primary" title="0">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+                    </div>
+                    <div class=" col-lg-1">
+                        <b>Axtar</b>
+                        <button type="button" class="btn btn-block btn-primary active"><i class="fas fa-search"></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Otaqların siyahısı</strong></h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Otaq Nömrəsi</th>
+                                            <th>Qiymet(1 gün)</th>
+                                            <th>Böyük</th>
+                                            <th>Uşaq</th>
+                                            <th>Yataq Növü</th>
+                                            <th>Ətrafli</th>
+                                            <th>Şəkil</th>
+                                            <th>Ümumi Qiymət</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Otaq Nömrəsi</th>
+                                            <th>Qiymet(1 gün)</th>
+                                            <th>Böyük</th>
+                                            <th>Uşaq</th>
+                                            <th>Yataq Növü</th>
+                                            <th>Ətrafli</th>
+                                            <th>Şəkil</th>
+                                            <th>Ümumi Qiymət</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach (var item in Model.room)
+{
+                                            <tr>
+                                                <th>@item.Number</th>
+                                                <th>@item.Price</th>
+                                                <th>@item.PersonCapacity</th>
+                                                <th>@item.ChildCapacity</th>
+                                                <th>@item.BedType</th>
+                                                <th>@item.Desc</th>
+                                                <th><img style="height:20px" src="~/wwwroot/images/roomimg/@item.Photo" /></th>
+                                                <th>@item.Price</th>
+                                                <th><button class="btn btn-primary " data-toggle="modal" data-target="#noti">Otağı seç</button></th>
+                                            </tr>
+}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Invoice -->
+        <div class="modal modal-success fade" id="noti" tabindex="-1" role="dialog" aria-labelledby="modal_5" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title_6">Otağı seçmək isdəyirsiz?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="py-3 text-center">
+                            <p>
+                                Tarix Aralıği : 2019-03-20 - 2019-03-28 .
+                            </p>
+                            <p>
+                                Boyük : 2 , Uşaq : 1 .
+                            </p>
+                            <p>
+                                Otaq № : 21 .
+                            </p>
+                            <p>
+                                Ümümi Məbləğ : 616.00 AZN .
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn  btn-primary" data-dismiss="modal">Tamamla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Select Customer -->
+        <div class="modal fade" id="selectcustomer" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="title" id="defaultModalLabel">Müştəri Axtar</h6>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="col-12">
+                                <div class="input-group input-group-transparent mb-4">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Müştərinin Adi</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{int i = 1; }
+                                        @foreach (var item in Model.customer)
+                                        {
+                                            <tr>
+                                                <th scope="row">@i</th>
+                                                @{i++;}
+                                                <td>@item.Fullname</td>
+                                                <td scope="col"><button type="button" class="btn btn-primary">Seç</button></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">BAĞLA</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+

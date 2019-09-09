@@ -12,13 +12,10 @@
 
     <link rel="stylesheet" href="~/wwwroot/vendor/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="~/wwwroot/vendor/fontawesome/css/font-awesome.min.css">
-
-    <link href="~/wwwroot/vendor/datepicker/css/hotel-datepicker.css" rel="stylesheet"><!-- Optional -->
-
-
     <link rel="stylesheet" href="~/wwwroot/vendor/charts-c3/plugin.css" />
     <link rel="stylesheet" href="~/wwwroot/vendor/jvectormap/jquery-jvectormap-2.0.3.css" />
     <link rel="stylesheet" href="~/wwwroot/css/main.css" type="text/css">
+    <link rel="stylesheet" href="~/wwwroot/vendor/datepic/bootstrap-datepicker.css" type="text/css">
 
 
 
@@ -88,7 +85,7 @@
                     <li class="">
                         <a href="javascript:void(0)" class="has-arrow" aria-expanded="false"><i class="fas fa-concierge-bell"></i><span>Reception</span></a>
                         <ul aria-expanded="false" class="collapse" style="height: 0px;">
-                            <li><a href="@Url.Action("neworder","reception")">Yeni Otaq Sifarişi</a></li>
+                            <li><a href="@Url.Action("search","reception")">Yeni Otaq Sifarişi</a></li>
                             <li><a href="@Url.Action("orders","reception")">Sifarişlərə bax</a></li>
                             <li><a href="@Url.Action("rooms","reception")">Otaqlara Bax</a></li>
                         </ul>
@@ -101,6 +98,7 @@
                             <li><a href="@Url.Action("products","restoran")">Məhsullara Bax</a></li>
                         </ul>
                     </li>
+                    <li><a href="@Url.Action("index","customer")"><i class="fas fa-users"></i><span>Müştərilər</span></a></li>
 
 
                     <li><a href="ui-elements.html"><i class="ti-vector"></i><span>UI Elements</span></a></li>
@@ -197,9 +195,7 @@
     <!-- Core -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="~/wwwroot/vendor/datepicker/js/fecha.min.js"></script>
 
-    <script src="~/wwwroot/vendor/datepicker/js/hotel-datepicker.min.js"></script>
 
 
     <script src="~/wwwroot/bundles/libscripts.bundle.js"></script>
@@ -208,7 +204,6 @@
 
     <script src="~/wwwroot/bundles/c3.bundle.js"></script>
     <script src="~/wwwroot/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
-    <script src="~/wwwroot/js/pages/index.js"></script>
 
     <script src="~/wwwroot/js/pages/todo-js.js"></script>
 
@@ -217,14 +212,16 @@
     <script src="~/wwwroot/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script> <!-- Bootstrap Colorpicker Js -->
     <script src="~/wwwroot/vendor/jquery-inputmask/jquery.inputmask.bundle.js"></script> <!-- Input Mask Plugin Js -->
     <script src="~/wwwroot/vendor/nouislider/js/nouislider.min.js"></script> <!-- SLIDERS -->
+
+    <script src="~/wwwroot/vendor/datepic/bootstrap-datepicker.js"></script>
+    <script src="~/wwwroot/vendor/datepic/bootstrap-datepicker.az.min.js"></script>
+
     <!-- Theme JS -->
     <script src="~/wwwroot/js/theme.js"></script>
     <script src="~/wwwroot/js/pages/advanced-form.js"></script>
 
 
-    <script src="~/wwwroot/js/datepic.js"></script>
-
-
+    <script src="~/wwwroot/js/pages/index.js"></script>
 
 
 </body>

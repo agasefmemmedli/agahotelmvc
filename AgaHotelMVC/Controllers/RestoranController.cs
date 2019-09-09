@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AgaHotelMVC.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,12 +7,18 @@ using System.Web.Mvc;
 
 namespace AgaHotelMVC.Controllers
 {
-    public class RestoranController : Controller
+    public class RestoranController : BaseController
     {
         // GET: Restoran
         public ActionResult NewOrder()
         {
-            return View();
+            ProductOrderPage product = new ProductOrderPage
+            {
+                product = _context.Products.Include("Category").ToList(),
+                customer = _context.Customers.ToList(),
+                productCategories = _context.ProductCategories.ToList()
+            };
+            return View(product);
         }
         public ActionResult Orders()
         {

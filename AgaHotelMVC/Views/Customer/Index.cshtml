@@ -1,0 +1,72 @@
+﻿@model List<Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="page">
+
+        <div class="container-fluid">
+
+            <div class="row clearfix justify-content-end">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card flex-fill">
+                        <div class="body taskboard planned_task">
+                            <a href="@Url.Action("addcustomer")" class="btn btn-block btn-outline-primary btn-animated btn-animated-y">
+                                <span class="btn-inner--visible">Müştəri Əlavə Et</span>
+                                <span class="btn-inner--hidden"><i class="fa fa-plus"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Müştərilərin siyahısı</strong></h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Ad Soyad Ata Adi</th>
+                                            <th>Mobil Nömrə</th>
+                                            <th>E-poçt Ünvan</th>
+                                            <th>Vəsiqənin Seriyası və Nömrəsi</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Ad Soyad Ata Adi</th>
+                                            <th>Mobil Nömrə</th>
+                                            <th>E-poçt Ünvan</th>
+                                            <th>Vəsiqənin Seriyası və Nömrəsi</th>
+                                            <th></th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <th>@item.Fullname</th>
+                                                <th>@item.PhoneNumber</th>
+                                                <th>@item.Email</th>
+                                                <th>@item.PersonIdentification</th>
+                                                <th><a class="btn btn-primary " href="@Url.Action("UpdateCustomer", new { Id=item.Id })">Dəyiş</a></th>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
