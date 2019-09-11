@@ -3,21 +3,34 @@
     ViewBag.Title = "Rooms";
 }
 
-<div class="page">
+    <div class="page">
 
-    <div class="container-fluid">
-        <div class="row clearfix justify-content-end">
-            <div class="col-lg-4 col-md-6">
-                <div class="card flex-fill">
-                    <div class="body taskboard planned_task">
-                        <a href="@Url.Action("addroom")" class="btn btn-block btn-outline-primary btn-animated btn-animated-y">
-                            <span class="btn-inner--visible">Otaq Əlavə Et</span>
-                            <span class="btn-inner--hidden"><i class="fa fa-plus"></i></span>
-                        </a>
+        <div class="container-fluid">
+            <div class="row clearfix justify-content-end">
+                <div class="col-lg-8 col-md-6">
+                    <div class="card flex-fill">
+                        <div class="body taskboard planned_task">
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-target="#searchroomtxt" id="uintTextBox" placeholder="Otağın nömrəsini yaz..." aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <a class="btn btn-primary" data-target="#searchroom">Axtar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card flex-fill">
+                            <div class="body taskboard planned_task">
+                                <a href="@Url.Action("addroom")" class="btn btn-block btn-outline-primary btn-animated btn-animated-y">
+                                    <span class="btn-inner--visible">Otaq Əlavə Et</span>
+                                    <span class="btn-inner--hidden"><i class="fa fa-plus"></i></span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
 
@@ -68,8 +81,8 @@
                                             <th>@item.BedType</th>
                                             <th>@item.Desc</th>
                                             <th><img style="height:20px" src="~/wwwroot/images/roomimg/@item.Photo" /></th>
-                                            <th>@item.Price</th>
-                                            <th><button class="btn btn-primary " data-toggle="modal" data-target="#noti">Otağı seç</button></th>
+                                            <th><a href="@Url.Action("UpdateRoom",new { Id = item.Id})" class="btn btn-primary">Dəyiş</a></th>
+                                            <th><a href="@Url.Action("DeleteRoom",new { Id = item.Id})" class="btn btn-danger">Sil</a></th>
                                         </tr>
                                     }
                                 </tbody>

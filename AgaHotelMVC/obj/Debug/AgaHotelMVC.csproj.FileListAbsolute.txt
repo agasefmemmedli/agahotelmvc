@@ -90,3 +90,4 @@ C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.csproj
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.ChangeEnum.resources
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.AddDataAnnitations.resources
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.AddIdNameToProductCategory.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.changeRequiredPhotoInRoom.resources

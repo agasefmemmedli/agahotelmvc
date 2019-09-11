@@ -38,7 +38,7 @@ namespace AgaHotelMVC.Models
 
         public string Desc { get; set; }
 
-        [Required(ErrorMessage = "Şəkil əlavə edin!")]
+
 
         public string Photo { get; set; }
         public List<Order> Orders { get; set; }

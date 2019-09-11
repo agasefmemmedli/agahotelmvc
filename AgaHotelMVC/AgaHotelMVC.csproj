@@ -152,6 +152,10 @@
     <Compile Include="Migrations\201909091619328_AddIdNameToProductCategory.Designer.cs">
       <DependentUpon>201909091619328_AddIdNameToProductCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909101412235_changeRequiredPhotoInRoom.cs" />
+    <Compile Include="Migrations\201909101412235_changeRequiredPhotoInRoom.Designer.cs">
+      <DependentUpon>201909101412235_changeRequiredPhotoInRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -248,6 +252,7 @@
     <Content Include="wwwroot\images\xs\avatar7.jpg" />
     <Content Include="wwwroot\images\xs\avatar8.jpg" />
     <Content Include="wwwroot\images\xs\avatar9.jpg" />
+    <Content Include="wwwroot\js\ajax.js" />
     <Content Include="wwwroot\js\datepic.js" />
     <Content Include="wwwroot\js\demo.js" />
     <Content Include="wwwroot\js\pages\advanced-form.js" />
@@ -371,6 +376,8 @@
     <Content Include="Views\Customer\AddCustomer.cshtml" />
     <Content Include="Views\Customer\UpdateCustomer.cshtml" />
     <Content Include="Views\Reception\AddRoom.cshtml" />
+    <Content Include="Views\Reception\UpdateRoom.cshtml" />
+    <Content Include="Views\Shared\_RoomSearchList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909071843245_Init.resx">
@@ -384,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909091619328_AddIdNameToProductCategory.resx">
       <DependentUpon>201909091619328_AddIdNameToProductCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909101412235_changeRequiredPhotoInRoom.resx">
+      <DependentUpon>201909101412235_changeRequiredPhotoInRoom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
