@@ -1,0 +1,18 @@
+﻿@model Product
+
+
+
+
+<tr>
+    <th><i class="fas fa-glass-martini-alt"></i></th>
+    <td>@Model.Name</td>
+    <td><span>@Model.Price AZN</span></td>
+    <td id="@Model.Id" class="invoice-count">2</td>
+    <td><span>AZN</span></td>
+    <td>
+        <button type="button" class="btn btn-secondary btn-animated btn-animated-y remove-invoice">
+            <span class="btn-inner--hidden">Cix</span>
+            <span class="btn-inner--visible"><i class="fas fa-minus"></i></span>
+        </button>
+    </td>
+</tr>

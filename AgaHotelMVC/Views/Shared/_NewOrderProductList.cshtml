@@ -1,0 +1,66 @@
+﻿
+@model ProductOrderPage
+
+
+<div class="body">
+    <ul class="nav nav-tabs-new">
+        @{int i = 1; }
+        @foreach (var item in Model.productCategories)
+        {
+            <li class="nav-item mb-2"><a class="nav-link @(i == 1 ? "active" : "") " data-toggle="tab" href="#@item.IdName">@item.Name</a></li>
+            { i++; }
+        }
+    </ul>
+</div>
+
+
+<div class="tab-content padding-0">
+    @{ i = 1; }
+
+    @foreach (var cat in Model.productCategories)
+    {
+        <div class="tab-pane card @(i == 1 ? "active" : "") " id="@cat.IdName">
+            @{ i++; }
+
+            <div class="col-lg-12">
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0 va_center">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Adı</th>
+                                    <th>Qiymət</th>
+                                    <th>Anbarda</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var pr in Model.product)
+                            {
+                                if (cat.Name == pr.Category.Name)
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <th><i class="fas fa-glass-martini-alt"></i></th>
+                                            <td>@pr.Name</td>
+                                            <td class="price"><span>@pr.Price</span>AZN</td>
+                                            <td class="count">@pr.Count</td>
+                                            <td>
+                                                <button type="button" id="@pr.Id" class="btn btn-secondary btn-animated btn-animated-y btn-add-tolist add-invoice">
+                                                    <span class="btn-inner--hidden">Əlavə et</span>
+                                                    <span class="btn-inner--visible"><i class="fas fa-plus"></i></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>}
+
+
+
+</div>

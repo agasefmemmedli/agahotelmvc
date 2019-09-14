@@ -1,0 +1,37 @@
+﻿@model List<Product>
+
+
+<thead>
+    <tr>
+        <th>Məhsulun Adı</th>
+        <th>Kateqoriyası</th>
+        <th>Qiyməti</th>
+        <th>Sayı</th>
+        <th></th>
+        <th></th>
+    </tr>
+</thead>
+<tfoot>
+    <tr>
+        <th>Məhsulun Adı</th>
+        <th>Kateqoriyası</th>
+        <th>Qiyməti</th>
+        <th>Sayı</th>
+        <th></th>
+        <th></th>
+    </tr>
+</tfoot>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Name</th>
+            <th>@item.Category.Name</th>
+            <th>@item.Price</th>
+            <th>@item.Count</th>
+            <th><a href="@Url.Action("UpdateProduct",new { Id = item.Id})" class="btn btn-primary">Dəyiş</a></th>
+            <th><a href="@Url.Action("DeleteProduct",new { Id = item.Id})" class="btn btn-danger">Sil</a></th>
+        </tr>
+    }
+</tbody>
+

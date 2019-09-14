@@ -23,6 +23,8 @@ namespace AgaHotelMVC.Controllers
             return View(rooms);
         }
 
+        
+
 
         public ActionResult RoomsSearch(string txt)
         {
@@ -148,8 +150,9 @@ namespace AgaHotelMVC.Controllers
         {
             return View();
         }
-        public ActionResult Search(SearchList search)
+        public ActionResult Search(SearchInSearch search = null)
         {
+
             SearchPage page = new SearchPage
             {
                 room = _context.Rooms.ToList(),
@@ -157,6 +160,13 @@ namespace AgaHotelMVC.Controllers
 
             };
 
+            if (search == null) {
+               
+                return View(page);
+            }
+            if (ModelState.IsValid){
+
+            }
             return View(page);
         }
     }

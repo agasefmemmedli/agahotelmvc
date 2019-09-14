@@ -167,8 +167,9 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\InvoiceProduct.cs" />
     <Compile Include="ViewModel\ProductOrderPage.cs" />
-    <Compile Include="ViewModel\SearchList.cs" />
+    <Compile Include="ViewModel\SearchInSearch.cs" />
     <Compile Include="ViewModel\SearchPage.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -378,6 +379,12 @@
     <Content Include="Views\Reception\AddRoom.cshtml" />
     <Content Include="Views\Reception\UpdateRoom.cshtml" />
     <Content Include="Views\Shared\_RoomSearchList.cshtml" />
+    <Content Include="Views\Shared\_SearchSearchsList.cshtml" />
+    <Content Include="Views\Shared\_NewOrderProductList.cshtml" />
+    <Content Include="Views\Shared\_ProductList.cshtml" />
+    <Content Include="Views\Restoran\AddProduct.cshtml" />
+    <Content Include="Views\Restoran\UpdateProduct.cshtml" />
+    <Content Include="Views\Shared\_NewOrderProductInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201909071843245_Init.resx">

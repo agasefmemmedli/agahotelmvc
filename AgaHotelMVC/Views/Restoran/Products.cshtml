@@ -1,7 +1,60 @@
-﻿
+﻿@model List<Product>
 @{
     ViewBag.Title = "Products";
 }
 
-<h2>Products</h2>
+<div class="page">
+
+    <div class="container-fluid">
+        <div class="row clearfix justify-content-end">
+            <div class="col-lg-8 col-md-6">
+                <div class="card flex-fill">
+                    <div class="body taskboard planned_task">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="uintTextBox" placeholder="Otağın nömrəsini yaz..." aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <a class="btn btn-primary" data-target="#searchproducttxt">Axtar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card flex-fill">
+                    <div class="body taskboard planned_task">
+                        <a href="@Url.Action("addproduct")" class="btn btn-block btn-outline-primary btn-animated btn-animated-y">
+                            <span class="btn-inner--visible">Məhsul Əlavə Et</span>
+                            <span class="btn-inner--hidden"><i class="fa fa-plus"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="header">
+                    <h2><strong>Otaqların siyahısı</strong></h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            @{
+                                Html.RenderPartial("~/Views/Shared/_ProductList.cshtml", model: Model);
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 

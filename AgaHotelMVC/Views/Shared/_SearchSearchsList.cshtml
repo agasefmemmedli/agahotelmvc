@@ -1,0 +1,45 @@
+﻿@model List<Room>
+
+
+<thead>
+    <tr>
+        <th>Otaq Nömrəsi</th>
+        <th>Qiymet(1 gün)</th>
+        <th>Böyük</th>
+        <th>Uşaq</th>
+        <th>Yataq Növü</th>
+        <th>Ətrafli</th>
+        <th>Şəkil</th>
+        <th>Ümumi Qiymət</th>
+        <th></th>
+    </tr>
+</thead>
+<tfoot>
+    <tr>
+        <th>Otaq Nömrəsi</th>
+        <th>Qiymet(1 gün)</th>
+        <th>Böyük</th>
+        <th>Uşaq</th>
+        <th>Yataq Növü</th>
+        <th>Ətrafli</th>
+        <th>Şəkil</th>
+        <th>Ümumi Qiymət</th>
+        <th></th>
+    </tr>
+</tfoot>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Number</th>
+            <th>@item.Price</th>
+            <th>@item.PersonCapacity</th>
+            <th>@item.ChildCapacity</th>
+            <th>@item.BedType</th>
+            <th>@item.Desc</th>
+            <th><img style="height:20px" src="~/wwwroot/images/roomimg/@item.Photo" /></th>
+            <th>@item.Price</th>
+            <th><button class="btn btn-primary " data-toggle="modal" data-target="#noti">Otağı seç</button></th>
+        </tr>
+    }
+</tbody>
