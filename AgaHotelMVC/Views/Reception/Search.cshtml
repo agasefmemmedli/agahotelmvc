@@ -1,4 +1,4 @@
-﻿@model SearchPage
+﻿@model SearchRoomForOrder
 @{
     ViewBag.Title = "Search";
 }
@@ -7,12 +7,12 @@
 
         <div class="container-fluid">
             <div class="row clearfix justify-content-end">
-                
+
                 <div class="col-lg-4 col-md-6">
                     <div class="card flex-fill">
                         <div class="body taskboard planned_task text-center">
                             <button type="button" class="btn btn-primary btn-block" disabled>
-                                <span class="btn-inner--visible">Müştəri: Memmedli Agasef Seymur</span>
+                                <span class="btn-inner--visible">Müştəri:<span class="select-cust-name"></span></span>
                             </button>
                         </div>
                     </div>
@@ -28,53 +28,56 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12 p-0">
-                <div class="row cols-xs-space cols-sm-space cols-md-space justify-content-center">
-                    <div class=" col-lg-4">
-                        <b>Cixiş tarixi</b>
-                        <b>və</b>
-                        <b>Giriş tarixi</b>
-                        <div class="input-group input-daterange">
-                            <input type="text" id="checkin" class="form-control">
-                            <span class="input-group-text" id="basic-addon3">to</span>
-                            <input type="text" id="checkout" aria-describedby="basic-addon" class="form-control">
+            <div class="col-lg-12 p-0 search-list">
+                    <div class="row cols-xs-space cols-sm-space cols-md-space justify-content-center">
+                        <div class=" col-lg-4">
+                            <b>Cixiş tarixi</b>
+                            <b>və</b>
+                            <b>Giriş tarixi</b>
+                            <div class="input-group input-daterange">
+                                <input type="text"  class="form-control checkin">
+                                <span class="input-group-text" id="basic-addon3">to</span>
+                                <input type="text" aria-describedby="basic-addon" class="form-control checkout">
+                            </div>
                         </div>
-                    </div>
-                    <div class=" col-lg-2">
-                        <b>Böyük</b>
-                        <select class="selectpicker" data-style="btn-primary" title="1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                        </select>
-                    </div>
-                    <div class=" col-lg-2">
-                        <b>Uşaq</b>
-                        <select class="selectpicker" data-style="btn-primary" title="0">
-                            <option>0</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                        </select>
-                    </div>
-                    <div class=" col-lg-1">
-                        <b>Axtar</b>
-                        <a data-target="#searchroomfororder"  class="btn btn-primary active"><i class="fas fa-search"></i></a>
+                        <div class=" col-lg-2">
+                            <b>Böyük</b>
+                            <select class="selectpicker person" name="" data-style="btn-primary">
+                                <option selected value="-1">0</option>
+                                <option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class=" col-lg-2">
+                            <b>Uşaq</b>
+                            <select class="selectpicker child" name="" data-style="btn-primary">
+                                <option selected value="0">0</option>
+                                <<option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class=" col-lg-1">
+                            <b>Axtar</b><br>
+                            <a class="btn btn-primary active"><i class="fas fa-search"></i></a>
+                        </div>
+
                     </div>
 
-                </div>
+
             </div>
 
 
 
 
-            <div class="row clearfix">
+            <div class="row clearfix rooms-list">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="header">
@@ -84,7 +87,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     @{
-                                        Html.RenderPartial("~/Views/Shared/_SearchSearchsList.cshtml", model: Model.room);
+                                        Html.RenderPartial("~/Views/Shared/_SearchSearchsList.cshtml", model: Model.Rooms);
                                     }
                                 </table>
                             </div>
@@ -148,30 +151,23 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Müştərinin Adi</th>
+                                            <th scope="col">Müştərinin Adi </th>
+                                            <th scope="col">Nömrəsi</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @{int i = 1; }
-                                        @foreach (var item in Model.customer)
-                                        {
-                                            <tr>
-                                                <th scope="row">@i</th>
-                                                @{i++;}
-                                                <td>@item.Fullname</td>
-                                                <td scope="col"><button type="button" class="btn btn-primary">Seç</button></td>
-                                            </tr>
+                                        @{
+                                            Html.RenderPartial("~/Views/Shared/_CustList.cshtml", model: Model.Customers);
                                         }
+
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">BAĞLA</button>
+                        <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">BAĞLA</button>
                     </div>
                 </div>
             </div>

@@ -6,15 +6,14 @@ using System.Web;
 
 namespace AgaHotelMVC.ViewModel
 {
-    public class SearchInSearch
+    public class SearchForRoom
     {
-        [Required(ErrorMessage ="Giriş tarixini secin")]
+        [Required(ErrorMessage = "Giriş tarixini secin")]
         public DateTime CheckIn { get; set; }
 
         [Required(ErrorMessage = "Cixiş tarixini secin")]
         public DateTime CheckOut { get; set; }
         public int Person { get; set; }
         public int Child { get; set; }
-
     }
 }

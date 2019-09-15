@@ -1,4 +1,5 @@
-﻿using AgaHotelMVC.Models;
+﻿using AgaHotelMVC.Helper;
+using AgaHotelMVC.Models;
 using AgaHotelMVC.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,8 @@ using System.Web.Mvc;
 
 namespace AgaHotelMVC.Controllers
 {
+    [Auth]
+
     public class RestoranController : BaseController
     {
         // GET: Restoran

@@ -91,3 +91,9 @@ C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrat
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.AddDataAnnitations.resources
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.AddIdNameToProductCategory.resources
 C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.changeRequiredPhotoInRoom.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.UpdateRole.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.Updattedata.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.Updattedatas.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.Updattedatass.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.UpdatePassLeng.resources
+C:\Users\agase\source\repos\AgaHotelMVC\AgaHotelMVC\obj\Debug\AgaHotelMVC.Migrations.Updattedatabase.resources

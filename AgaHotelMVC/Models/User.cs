@@ -6,6 +6,10 @@ using System.Web;
 
 namespace AgaHotelMVC.Models
 {
+    public enum Role
+    {
+        Admin, Restoran, Reception
+    }
     public class User
     {
         public int Id { get; set; }
@@ -14,8 +18,7 @@ namespace AgaHotelMVC.Models
         [MinLength(5, ErrorMessage = "Minimum 5 herif olmalidi")]
         [MaxLength(30, ErrorMessage = "Maximum 30 herif olmalidi")]
         public string FullName { get; set; }
-        [Required(ErrorMessage = "Rolu Secin edin!")]
-        public int RoleId { get; set; }
+
         [Required(ErrorMessage = "E-poctu daxil edin!")]
         [MinLength(5, ErrorMessage = "Minimum 5 herif olmalidi")]
         [MaxLength(30, ErrorMessage = "Maximum 30 herif olmalidi")]
@@ -23,7 +26,7 @@ namespace AgaHotelMVC.Models
 
         [Required(ErrorMessage = "Parolu daxil edin!")]
         [MinLength(5, ErrorMessage = "Minimum 5 herif olmalidi")]
-        [MaxLength(30, ErrorMessage = "Maximum 30 herif olmalidi")]
+        [MaxLength(80, ErrorMessage = "Maximum 80 herif olmalidi")]
         public string Password { get; set; }
         [Required]
 

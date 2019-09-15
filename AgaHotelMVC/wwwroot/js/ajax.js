@@ -25,7 +25,10 @@
     //});
     var product = $(".hidden-product");
     product.hide();
-
+    var searchList = $(".search-list");
+    searchList.hide();
+    var rooms = $(".rooms-list");
+    rooms.hide();
     //search room in rooms
     $("[data-target='#searchroom']").click(function () {
         var searchtext = $("#uintTextBox").val();
@@ -213,14 +216,18 @@
     }
 
     //show and hidden invoice
-    function showProductList() {
+    function show() {
         var product = $(".hidden-product");
         product.show()
-        
+        var searchList = $(".search-list");
+        searchList.show();
+        var rooms = $(".rooms-list");
+        rooms.show()
     }
 
 
 
+    //select customer with modal
 
     $(".select-cust").click(function () {
 
@@ -231,7 +238,7 @@
         selectcus.text("");
         selectcus.text(name.text());
         selectcus.attr("id", Id);
-        showProductList();
+        show();
         $("[data-target='#selectcustomer']").attr("disabled", "");
         $('.close-modal').trigger('click');
     });
@@ -244,5 +251,33 @@
         modaltot.text(total.text());
         var selectcusmodal = $(".cust-name-modal-invoice");
         selectcusmodal.text($(".select-cust-name").text());
+    });
+
+
+
+    $(".search-room").click(function () {
+
+        console.log("aza");
+        var chechIn = $(".checkin");
+        var checkOut = $(".checkout");
+
+        var person = $(".person:selected");
+        var child = $(".child:selected");
+        var search = {};
+        search = { CheckIn: chechIn.text(), CheckOut: checkOut.text(), Person: person.text(), Child: child.text() };
+        
+       
+        $.ajax({
+            url: "/reception/SearchInSearch?search=" + search,
+            type: "get",
+            dataType: "html",
+            success: function (response) {
+                $(".dataTable").empty();
+                $(".dataTable").append(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     });
 })(jQuery);

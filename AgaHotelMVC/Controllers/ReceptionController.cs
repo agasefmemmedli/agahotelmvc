@@ -1,4 +1,5 @@
-﻿using AgaHotelMVC.Models;
+﻿using AgaHotelMVC.Helper;
+using AgaHotelMVC.Models;
 using AgaHotelMVC.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Web.Mvc;
 
 namespace AgaHotelMVC.Controllers
 {
+    [Auth]
+
     public class ReceptionController : BaseController
     {
         // GET: Reception
@@ -150,24 +153,25 @@ namespace AgaHotelMVC.Controllers
         {
             return View();
         }
-        public ActionResult Search(SearchInSearch search = null)
+        public ActionResult Search()
+        {
+            SearchRoomForOrder page = new SearchRoomForOrder
+            {
+                Rooms = _context.Rooms.ToList(),
+                Customers = _context.Customers.ToList(),
+                
+            };
+            return View(page);
+            
+        }
+        public ActionResult SearchInSearch(SearchForRoom search = null)
         {
 
-            SearchPage page = new SearchPage
-            {
-                room = _context.Rooms.ToList(),
-                customer = _context.Customers.ToList()
+            List<Room> rooms = _context.Rooms.Include("Bookings").Where(r => (search.Person != -1 ? r.PersonCapacity == search.Person : true)
+            && r.ChildCapacity == search.Child).ToList();
 
-            };
+            return PartialView("_SearchSearchsList", rooms);
 
-            if (search == null) {
-               
-                return View(page);
-            }
-            if (ModelState.IsValid){
-
-            }
-            return View(page);
         }
     }
 }

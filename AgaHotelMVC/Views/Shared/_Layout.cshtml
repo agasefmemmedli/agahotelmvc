@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    User user = ViewBag.User as User;
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -70,8 +75,8 @@
                 <div class="user-info">
                     <div class="image"><a href="#"><img src="~/wwwroot/images/user.png" alt="User"></a></div>
                     <div class="detail mt-3">
-                        <h5 class="mb-0">Mike Thomas</h5>
-                        <small>Admin</small>
+                        <h5 class="mb-0">@user.FullName</h5>
+                        <small>@user.Role</small>
                     </div>
                     <div class="social">
                         <a href="javascript:void(0);" title="facebook"><i class="ti-twitter-alt"></i></a>
@@ -82,26 +87,35 @@
                 <ul id="main-menu" class="metismenu">
                     <li class="g_heading">Main</li>
                     <li class=""><a href="@Url.Action("index","main")"><i class="ti-home"></i><span>Əsas səhifə</span></a></li>
-                    <li class="">
-                        <a href="javascript:void(0)" class="has-arrow" aria-expanded="false"><i class="fas fa-concierge-bell"></i><span>Reception</span></a>
-                        <ul aria-expanded="false" class="collapse" style="height: 0px;">
-                            <li><a href="@Url.Action("search","reception")">Yeni Otaq Sifarişi</a></li>
-                            <li><a href="@Url.Action("orders","reception")">Sifarişlərə bax</a></li>
-                            <li><a href="@Url.Action("rooms","reception")">Otaqlara Bax</a></li>
-                        </ul>
-                    </li>
-                    <li class="">
-                        <a href="javascript:void(0)" class="has-arrow" aria-expanded="false"><i class="fas fa-utensils"></i><span>Restoran</span></a>
-                        <ul aria-expanded="false" class="collapse" style="height: 0px;">
-                            <li><a href="@Url.Action("neworder","restoran")">Yeni Sifariş</a></li>
-                            <li><a href="@Url.Action("orders","restoran")">Sifarişlərə bax</a></li>
-                            <li><a href="@Url.Action("products","restoran")">Məhsullara Bax</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="@Url.Action("index","customer")"><i class="fas fa-users"></i><span>Müştərilər</span></a></li>
 
+                    @if (user.Role == Role.Reception || user.Role == Role.Admin)
+                    {
+                        <li class="">
+                            <a href="javascript:void(0)" class="has-arrow" aria-expanded="false"><i class="fas fa-concierge-bell"></i><span>Reception</span></a>
+                            <ul aria-expanded="false" class="collapse" style="height: 0px;">
+                                <li><a href="@Url.Action("search","reception")">Yeni Otaq Sifarişi</a></li>
+                                <li><a href="@Url.Action("orders","reception")">Sifarişlərə bax</a></li>
+                                <li><a href="@Url.Action("rooms","reception")">Otaqlara Bax</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (user.Role == Role.Reception || user.Role == Role.Admin)
+                    {
+                        <li class="">
+                            <a href="javascript:void(0)" class="has-arrow" aria-expanded="false"><i class="fas fa-utensils"></i><span>Restoran</span></a>
+                            <ul aria-expanded="false" class="collapse" style="height: 0px;">
+                                <li><a href="@Url.Action("neworder","restoran")">Yeni Sifariş</a></li>
+                                <li><a href="@Url.Action("orders","restoran")">Sifarişlərə bax</a></li>
+                                <li><a href="@Url.Action("products","restoran")">Məhsullara Bax</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (user.Role == Role.Admin)
+                    {
+                        <li><a href="@Url.Action("index", "customer")"><i class="fas fa-users"></i><span>Müştərilər</span></a></li>
+                    }
 
-                </ul>
+                    </ul>
             </nav>
         </div>
 
@@ -120,7 +134,6 @@
 
     <script src="~/wwwroot/bundles/c3.bundle.js"></script>
     <script src="~/wwwroot/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
-
     @*<script src="~/wwwroot/js/pages/todo-js.js"></script>*@
 
 

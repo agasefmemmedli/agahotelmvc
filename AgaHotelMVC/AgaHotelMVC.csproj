@@ -136,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Auth.cs" />
     <Compile Include="Migrations\201909071843245_Init.cs" />
     <Compile Include="Migrations\201909071843245_Init.Designer.cs">
       <DependentUpon>201909071843245_Init.cs</DependentUpon>
@@ -156,22 +157,47 @@
     <Compile Include="Migrations\201909101412235_changeRequiredPhotoInRoom.Designer.cs">
       <DependentUpon>201909101412235_changeRequiredPhotoInRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909151806095_UpdateRole.cs" />
+    <Compile Include="Migrations\201909151806095_UpdateRole.Designer.cs">
+      <DependentUpon>201909151806095_UpdateRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151839482_Updattedata.cs" />
+    <Compile Include="Migrations\201909151839482_Updattedata.Designer.cs">
+      <DependentUpon>201909151839482_Updattedata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151846542_Updattedatas.cs" />
+    <Compile Include="Migrations\201909151846542_Updattedatas.Designer.cs">
+      <DependentUpon>201909151846542_Updattedatas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151848395_Updattedatass.cs" />
+    <Compile Include="Migrations\201909151848395_Updattedatass.Designer.cs">
+      <DependentUpon>201909151848395_Updattedatass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151851492_UpdatePassLeng.cs" />
+    <Compile Include="Migrations\201909151851492_UpdatePassLeng.Designer.cs">
+      <DependentUpon>201909151851492_UpdatePassLeng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151852405_Updattedatabase.cs" />
+    <Compile Include="Migrations\201909151852405_Updattedatabase.Designer.cs">
+      <DependentUpon>201909151852405_Updattedatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="ViewModel\Login.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderList.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Invoice.cs" />
     <Compile Include="ViewModel\InvoiceProduct.cs" />
     <Compile Include="ViewModel\ProductOrderPage.cs" />
-    <Compile Include="ViewModel\SearchInSearch.cs" />
     <Compile Include="ViewModel\SearchPage.cs" />
+    <Compile Include="ViewModel\SearchForRoom.cs" />
+    <Compile Include="ViewModel\SearchRoomForOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -354,7 +380,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
-    <Content Include="Views\Reception\NewOrder.cshtml" />
     <Content Include="Views\Reception\Rooms.cshtml" />
     <Content Include="Views\Reception\Orders.cshtml" />
     <Content Include="Views\Restoran\NewOrder.cshtml" />
@@ -405,6 +430,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909101412235_changeRequiredPhotoInRoom.resx">
       <DependentUpon>201909101412235_changeRequiredPhotoInRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151806095_UpdateRole.resx">
+      <DependentUpon>201909151806095_UpdateRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151839482_Updattedata.resx">
+      <DependentUpon>201909151839482_Updattedata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151846542_Updattedatas.resx">
+      <DependentUpon>201909151846542_Updattedatas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151848395_Updattedatass.resx">
+      <DependentUpon>201909151848395_Updattedatass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151851492_UpdatePassLeng.resx">
+      <DependentUpon>201909151851492_UpdatePassLeng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151852405_Updattedatabase.resx">
+      <DependentUpon>201909151852405_Updattedatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

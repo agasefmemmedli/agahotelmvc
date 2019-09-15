@@ -1,9 +1,11 @@
 namespace AgaHotelMVC.Migrations
 {
+    using AgaHotelMVC.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Helpers;
 
     internal sealed class Configuration : DbMigrationsConfiguration<AgaHotelMVC.Data.HotelContext>
     {
@@ -14,10 +16,38 @@ namespace AgaHotelMVC.Migrations
 
         protected override void Seed(AgaHotelMVC.Data.HotelContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            User user = new User
+            {
+                FullName = "Yolchu Nasib",
+                Email = "Yolchu@gmail.com",
+                Password = "admin",
+                Role = Role.Admin
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.Users.Add(user);
+            context.SaveChanges();
+
+            User user2 = new User
+            {
+                FullName = "Agasef Memmedli",
+                Email = "mmaries221@gmail.com",
+                Password = "admin",
+                Role = Role.Reception
+            };
+
+            context.Users.Add(user2);
+            context.SaveChanges();
+            User user3 = new User
+            {
+                FullName = "Behruz Ehmedov",
+                Email = "baxa@gmail.com",
+                Password = "admin",
+                Role = Role.Restoran,
+                
+            };
+
+            context.Users.Add(user3);
+            context.SaveChanges();
         }
     }
 }
