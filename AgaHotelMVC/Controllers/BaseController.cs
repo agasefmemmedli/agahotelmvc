@@ -18,18 +18,6 @@ namespace AgaHotelMVC.Controllers
             _context = new HotelContext();
 
 
-
-
-
-            string Tocken = Request.Cookies["Tocken"].ToString();
-
-
-
-            User user = _context.Users.FirstOrDefault(u => u.Tocken == Tocken);
-            ViewBag.User = user;
-           
-
-
         }
     }
 }

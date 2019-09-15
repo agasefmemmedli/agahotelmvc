@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace AgaHotelMVC.Controllers
 {
-    [Auth]
 
     public class MainController : BaseController
     {

@@ -31,10 +31,6 @@ namespace AgaHotelMVC.Controllers
                 ModelState.AddModelError("Password", "Login ve ya parol səhfdi.");
                 return View();
             }
-            user.Tocken = Guid.NewGuid().ToString();
-            _context.SaveChanges();
-            Response.Cookies["Tocken"].Value = user.Tocken;
-            Response.Cookies["Tocken"].Expires = DateTime.Now.AddDays(1);
             return RedirectToAction("index", "main");
         }
 
