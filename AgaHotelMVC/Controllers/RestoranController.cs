@@ -25,10 +25,16 @@ namespace AgaHotelMVC.Controllers
 
             }
 
-
-            product.customer = _context.Customers.ToList();
+            
+            product.customer = _context.Customers.Include("Bookings").Where(c=>c.Bookings.Count!=0).ToList();
             product.productCategories = _context.ProductCategories.ToList();
             return View(product);
+        }
+        public ActionResult AboutOrder(int Id)
+        {
+            List<OrderList> lists = _context.OrderLists.Include("Product").Where(o => o.OrderId == Id).ToList();
+            return View(lists);
+
         }
 
         public ActionResult NewOrderSearch(string txt)
@@ -42,7 +48,9 @@ namespace AgaHotelMVC.Controllers
 
         public ActionResult Orders()
         {
-            return View();
+
+            List<Order> orders = _context.Order.Include("OrderLists").ToList();
+            return View(orders);
         }
         public ActionResult Products()
         {
@@ -133,6 +141,42 @@ namespace AgaHotelMVC.Controllers
                 return HttpNotFound();
             }
             return PartialView("_NewOrderProductInvoice", pr);
+        }
+
+
+        [HttpPost]
+        public ActionResult SaveOrder(List<InvoiceProduct> productList )
+        {
+            Booking booking = new Booking();
+            foreach (var item in productList)
+            {
+                booking = _context.Bookings.FirstOrDefault(b => b.CustomerId == item.CustId);
+            }
+            Order order = new Order
+            {
+                DateTime = DateTime.Now,
+                RoomId = booking.RoomId
+
+            };
+
+            _context.Order.Add(order);
+            _context.SaveChanges();
+
+            foreach (var item in productList)
+            {
+                Product product = _context.Products.Find(item.Id);
+                OrderList orderList = new OrderList
+                {
+                    OrderId = order.Id,
+                    ProductId = product.Id,
+                    Count = item.Count,
+                    Price = product.Price * item.Count
+                };
+                _context.OrderLists.Add(orderList);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("neworder", "restoran");
         }
     }
 }

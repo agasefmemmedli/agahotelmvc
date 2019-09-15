@@ -1,0 +1,11 @@
+﻿@model List<Customer>
+
+@foreach (var item in Model)
+{
+    <tr class="cust-info">
+        <th scope="row" class="cust-name">@item.Fullname</th>
+        <td>@item.PhoneNumber</td>
+        <td scope="col"><button type="button" class="btn btn-primary select-cust" id="@item.Id">Seç</button></td>
+    </tr>
+}
+

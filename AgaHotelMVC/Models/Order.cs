@@ -14,7 +14,7 @@ namespace AgaHotelMVC.Models
         [Required]
         public int RoomId { get; set; }
         public List<OrderList> OrderLists { get; set; }
-        public Room Room { get; set; }
+        public Room room { get; set; }
 
     }
 }

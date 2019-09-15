@@ -1,0 +1,48 @@
+﻿@model List<OrderList>
+
+    <div class="page">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Sifarishin məhsul siyahısı</strong></h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Məhsulun adı</th>
+                                        <th>Məhsulun sayi</th>
+                                        <th>Məhsulun ümümi qiyməti</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Məhsulun adı</th>
+                                        <th>Məhsulun sayi</th>
+                                        <th>Məhsulun ümümi qiyməti</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <th>@item.Product.Name</th>
+                                            <th>@item.Count</th>
+                                            <th>@item.Price</th>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+

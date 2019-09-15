@@ -1,0 +1,35 @@
+﻿@model List<Order>
+
+
+<thead>
+    <tr>
+        <th>Sifariş nömrəsi</th>
+        <th>Tarix</th>
+        <th>Məhsul sayi</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+</thead>
+<tfoot>
+    <tr>
+        <th>Sifariş nömrəsi</th>
+        <th>Tarix</th>
+        <th>Məhsul sayi</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+</tfoot>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <th>@item.DateTime</th>
+            <th>@item.OrderLists.Count()</th>
+            <th></th>
+            <th><a href="@Url.Action("AboutOrder",new { Id = item.Id})" class="btn btn-primary">Ətraflı</a></th>
+        </tr>
+    }
+</tbody>

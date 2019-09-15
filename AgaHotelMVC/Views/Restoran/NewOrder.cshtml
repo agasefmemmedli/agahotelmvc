@@ -11,7 +11,7 @@
                 <div class="card flex-fill">
                     <div class="body taskboard planned_task text-center">
                         <button type="button" class="btn btn-primary btn-block" disabled>
-                            <span class="btn-inner--visible">Müştəri: Memmedli Agasef Seymur</span>
+                            <span class="btn-inner--visible">Müştəri:<span class="select-cust-name"></span></span>
                         </button>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="row clearfix">
+        <div class="row clearfix hidden-product">
             <div class="col-lg-6">
                 <div class="card">
                     <div class="body">
@@ -54,7 +54,7 @@
 
 
 
-                <div class="col-lg-6">
+                <div  class="col-lg-6 invoice">
                     <div class=" padding-0">
                         <div class="card " id="invoice">
                             <div class="col-lg-12">
@@ -71,7 +71,6 @@
                                                     <th>Qiymət</th>
                                                     <th>Say</th>
                                                     <th>Ümumi</th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody class="order-list">
@@ -81,16 +80,15 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="justify-content-end">
+                                <div  class="justify-content-end">
                                     <div class="col-md-12 text-right">
-                                        <p class="m-b-0"><b>Toplam:</b> 560.00</p>
-                                        <p class="m-b-0">Xidmət: 10%</p>
-                                        <h3 class="m-b-0 m-t-10">616.00 AZN </h3>
+                                        <p class="m-b-0"><b>Toplam:</b></p>
+                                        <p class="m-b-0 "></p>
+                                        <h3 class="m-b-0 m-t-10 "><span class="total-price"></span> <span>AZN</span> </h3>
                                     </div>
                                     <div class=" col-lg-12 text-right mb-2">
                                         <hr>
-                                        <button class="btn btn-outline-secondary"><i class="ti-printer"></i></button>
-                                        <button class="btn btn-primary save-order" @*data-toggle="modal" data-target="#noti"*@>Sifarişi Tamamla</button>
+                                        <button class="btn btn-primary send-invoice" data-toggle="modal" data-target="#noti">Sifarişi Tamamla</button>
                                     </div>
                                 </div>
                             </div>
@@ -120,14 +118,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="py-3 text-center">
-                        <h4 class="heading mt-4">Müştərinin Adı: Ağasəf Məmmədli Seymur</h4>
+                        <h4 class="heading mt-4">Müştərinin Adı:<span class="cust-name-modal-invoice"></span></h4>
                         <p>
-                            Ümümi Məbləğ : 616.00 AZN
+                            Ümümi Məbləğ : <span class="modal-totalprice"></span> AZN
                         </p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn  btn-primary" data-dismiss="modal">Tamamla</button>
+                    <button type="button" class="btn  btn-primary save-order" data-dismiss="modal">Tamamla</button>
                 </div>
             </div>
         </div>
@@ -153,34 +151,23 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Otağın Nömrəsi</th>
-                                        <th scope="col">Müştərinin Adi</th>
+                                        <th scope="col">Müştərinin Adi </th>
+                                        <th scope="col">Nömrəsi</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">22</th>
-                                        <td>Agasef Memmedli Seymur</td>
-                                        <td scope="col"><button type="button" class="btn btn-primary">Seç</button></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">21</th>
-                                        <td>Agasef Memmedli Seymur</td>
-                                        <th scope="col"><button type="button" class="btn btn-primary">Seç</button></th>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">233</th>
-                                        <td>Agasef Memmedli Seymur</td>
-                                        <th scope="col"><button type="button" class="btn btn-primary">Seç</button></th>
-                                    </tr>
+                                    @{
+                                        Html.RenderPartial("~/Views/Shared/_CustList.cshtml", model: Model.customer);
+                                    }
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">BAĞLA</button>
+                    <button type="button" class="btn btn-secondary close-modal" data-dismiss="modal">BAĞLA</button>
                 </div>
             </div>
         </div>
