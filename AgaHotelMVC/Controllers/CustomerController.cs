@@ -18,6 +18,9 @@ namespace AgaHotelMVC.Controllers
             List<Customer> cs = _context.Customers.ToList();
             return View(cs);
         }
+
+
+        #region Customer Crud
         public ActionResult AddCustomer()
         {
             return View();
@@ -60,5 +63,6 @@ namespace AgaHotelMVC.Controllers
             }
             return View(customer);
         }
+        #endregion
     }
 }

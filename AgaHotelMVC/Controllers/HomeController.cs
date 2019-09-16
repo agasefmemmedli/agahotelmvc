@@ -25,6 +25,8 @@ namespace AgaHotelMVC.Controllers
         {
             return View();
         }
+
+        //Chech User 
         [HttpPost]
         public ActionResult Login(Login loginUsr)
         {
