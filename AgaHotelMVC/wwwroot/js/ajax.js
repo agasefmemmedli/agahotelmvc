@@ -1,9 +1,6 @@
 ﻿(function ($) {
 
     invoiceFullPrice();
-
-
-
     var product = $(".hidden-product");
     product.hide();
     var searchList = $(".search-list");
@@ -29,7 +26,7 @@
     });
 
 
-    // search product in new order list for ajax
+    // search product in new order list for  ajax 
 
 
     $("#searchproduct").click(function () {
@@ -234,6 +231,7 @@
         selectcusmodal.text($(".select-cust-name").text());
     });
 
+    // send room search to backend
 
 
     $(".search-room").click(function () {
