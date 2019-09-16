@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace AgaHotelMVC.Controllers
 {
-
+    [Auth]
     public class ReceptionController : BaseController
     {
         // GET: Reception
@@ -27,14 +27,14 @@ namespace AgaHotelMVC.Controllers
 
         
 
-
+        //ajax search in rooms controller
         public ActionResult RoomsSearch(string txt)
         {
             List<Room> rooms = _context.Rooms.Where(r=>r.Number.ToString().Contains(txt)).ToList();
 
             return PartialView("_RoomSearchList", rooms);
         }
-
+        #region Rooms Crud
         public ActionResult AddRoom()
         {
 
@@ -147,11 +147,14 @@ namespace AgaHotelMVC.Controllers
             _context.SaveChanges();
             return RedirectToAction("rooms");
         }
-
+        #endregion
         public ActionResult Orders()
         {
             return View();
         }
+
+
+        //create new room order  
         public ActionResult Search()
         {
             SearchRoomForOrder page = new SearchRoomForOrder
@@ -163,6 +166,9 @@ namespace AgaHotelMVC.Controllers
             return View(page);
             
         }
+
+
+        //ajax search in Search action
         public ActionResult SearchInSearch(SearchForRoom search = null)
         {
 

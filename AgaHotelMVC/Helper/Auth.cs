@@ -10,27 +10,15 @@ namespace AgaHotelMVC.Helper
 {
     public class Auth : ActionFilterAttribute
     {
-        private HotelContext context;
-        public Auth()
-        {
-            context = new HotelContext();
-        }
-
-
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
-
-            if (HttpContext.Current.Request.Cookies["Tocken"] == null)
+            if (HttpContext.Current.Session["UserLogin"] == null)
             {
-                string tocken = HttpContext.Current.Request.Cookies["Tocken"].ToString();
-                User user = context.Users.FirstOrDefault(u => u.Tocken == tocken);
-                if (user == null)
-                {
-                    filterContext.Result = new RedirectResult("/home/login");
-                    return;
-                }
+                filterContext.Result = new RedirectResult("~/home");
             }
+
+            base.OnActionExecuting(filterContext);
         }
     }
+    
 }

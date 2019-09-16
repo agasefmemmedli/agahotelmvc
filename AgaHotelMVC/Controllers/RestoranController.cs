@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace AgaHotelMVC.Controllers
 {
-   
 
+    [Auth]
     public class RestoranController : BaseController
     {
-        // GET: Restoran
+        // create new order action
         public ActionResult NewOrder(string txt=null)
         {
             ProductOrderPage product = new ProductOrderPage();
@@ -33,13 +33,15 @@ namespace AgaHotelMVC.Controllers
             product.productCategories = _context.ProductCategories.ToList();
             return View(product);
         }
+
+        // Order Information
         public ActionResult AboutOrder(int Id)
         {
             List<OrderList> lists = _context.OrderLists.Include("Product").Where(o => o.OrderId == Id).ToList();
             return View(lists);
 
         }
-
+        //  new order search action
         public ActionResult NewOrderSearch(string txt)
         {
             ProductOrderPage product = new ProductOrderPage();
@@ -71,7 +73,7 @@ namespace AgaHotelMVC.Controllers
         }
 
 
-
+        #region Product Crud
         public ActionResult AddProduct()
         {
             ViewBag.Category = _context.ProductCategories.ToList();
@@ -108,7 +110,7 @@ namespace AgaHotelMVC.Controllers
 
             return View(product);
         }
-
+     
 
         [HttpPost]
         public ActionResult UpdateProduct(Product product)
@@ -135,7 +137,10 @@ namespace AgaHotelMVC.Controllers
             _context.SaveChanges();
             return RedirectToAction("products");
         }
+        #endregion
 
+
+        // add product to invoice list
         public ActionResult AddToList(int Id)
         {
             Product pr = _context.Products.Find(Id);
@@ -146,7 +151,7 @@ namespace AgaHotelMVC.Controllers
             return PartialView("_NewOrderProductInvoice", pr);
         }
 
-
+        // save order 
         [HttpPost]
         public ActionResult SaveOrder(List<InvoiceProduct> productList )
         {

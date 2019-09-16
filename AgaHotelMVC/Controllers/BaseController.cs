@@ -14,9 +14,12 @@ namespace AgaHotelMVC.Controllers
         protected readonly HotelContext _context;
         public BaseController()
         {
-
             _context = new HotelContext();
 
+
+            //string Tocken = Session["UserId"].ToString();
+            //User user = _context.Users.FirstOrDefault(u => u.Tocken == Tocken);
+            //ViewBag.User = user;
 
         }
     }
